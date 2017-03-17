@@ -17,19 +17,20 @@ if (document.getElementById('ctl00_ContentPlaceHolder1_gvPending') === null) {
 } 
 else {
   checkToast();
-  var table = document.getElementById('ctl00_ContentPlaceHolder1_gvPending'),
-  cells = table.getElementsByTagName('td'),
-  sup = 0;
-  pen = cells[7].textContent.replace(/\s+/g, ' ');
+  table = document.getElementById('ctl00_ContentPlaceHolder1_gvPending');
+  cells = table.getElementsByTagName('td');
+  status = cells[7].textContent.replace(/\s+/g, ' ');
   title = 'Jobtrack #' + cells[0].textContent.replace(/\s+/g, ' ');
   time = moment(cells[2].textContent.replace(/\s+/g, ' ').trim(), 'MM/DD/YY hh:mm a').fromNow();
   body = cells[4].textContent.replace(/\s+/g, ' ') + '(' + cells[5].textContent.replace(/\s+/g, ' ').trim() + ')' + ' : ' + cells[1].textContent.replace(/\s+/g, ' ').trim() + '\n ' + time;
-  if (pen == 'New') {
+  if (status == 'New') {
     toast(title, body);
   }
 }
 function checkToast() {
-  if (Notification.permission !== 'denied') {
+  if (Notification.permission === 'granted') {
+  } 
+  else if (Notification.permission !== 'denied' || Notification.permission === 'default') {
     Notification.requestPermission(function (permission) {
       if (permission === 'granted') {
         location.reload();

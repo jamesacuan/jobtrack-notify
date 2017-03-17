@@ -8,34 +8,36 @@
 // @grant       none
 // ==/UserScript==
 moment().format();
+
 if (document.getElementById('ctl00_ContentPlaceHolder1_gvPending') === null) {
-  checkToast();
   title = 'Jobtrack has crashed';
   body = 'Don\'t worry. We have reload it for you';
   toast(title, body);
   location.reload();
 } 
+
 else {
-  checkToast();
   var table = document.getElementById('ctl00_ContentPlaceHolder1_gvPending'),
   cells = table.getElementsByTagName('td'),
-  status = cells[7].textContent.replace(/\s+/g, ' ');
-  title = 'Jobtrack #' + cells[0].textContent.replace(/\s+/g, ' ').trim();
+  sup = 0;
+  pen = cells[7].textContent.replace(/\s+/g, ' ');
+  title = 'Jobtrack #' + cells[0].textContent.replace(/\s+/g, ' ');
   time = moment(cells[2].textContent.replace(/\s+/g, ' ').trim(), 'MM/DD/YY hh:mm a').fromNow();
-  body = cells[4].textContent.replace(/\s+/g, ' ').trim() + '(' + cells[5].textContent.replace(/\s+/g, ' ').trim() + ')' + ' : ' + cells[1].textContent.replace(/\s+/g, ' ').trim() + '\n ' + time;
-  if (status == 'New') {
-    toast(title, body);
+  body = cells[4].textContent.replace(/\s+/g, ' ') + '(' + cells[5].textContent.replace(/\s+/g, ' ').trim() + ')' + ' : ' + cells[1].textContent.replace(/\s+/g, ' ').trim() + '\n ' + time;
+  if (pen == 'New') {
+    if (Notification.permission === 'granted') {
+      toast(title, body);
+    } 
+    else if (Notification.permission !== 'denied') {
+      Notification.requestPermission(function (permission) {
+        if (permission === 'granted') {
+          location.reload();
+        }
+      });
+    }
   }
 }
-function checkToast() {
-  if (Notification.permission !== 'denied') {
-    Notification.requestPermission(function (permission) {
-      if (permission === 'granted') {
-        location.reload();
-      }
-    });
-  }
-}
+
 function toast(title, body) {
   var notification = new Notification(title, {
     icon: 'http://eprofile.int.sencor.net/images/sencor150.png',

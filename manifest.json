@@ -1,0 +1,9 @@
+{
+     "name": "jobtrack-notify",
+     "version": "0.0.1",
+     "manifest_version": 1,
+     "content_scripts": [{
+         "js": ["/js/notify.js"],
+         "matches": ["http://jobtrack.ncg.sencor.net/*"]
+      }]
+}

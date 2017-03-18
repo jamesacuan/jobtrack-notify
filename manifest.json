@@ -1,7 +1,7 @@
 {
      "name": "jobtrack-notify",
-     "description": "",
-     "version": "0.0.6",    
+     "description": "Shows a toast notification for new or unassigned jobtrack.",
+     "version": "0.0.8",    
 	 "content_scripts":[
         {
             "matches": ["http://jobtrack.ncg.sencor.net/resolverdb.aspx"],

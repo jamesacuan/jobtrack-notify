@@ -1,14 +1,13 @@
 {
      "name": "jobtrack-notify",
-     "version": "0.0.3",
-     "manifest_version": 1,
-     
-	 "background": {
-	    "scripts": ["/js/notify.js"],
-	    "persistent": false
-	  },
-
-     "browser_action": {
-       "default_title": "Jobtrack Notifier"
-     }
+     "description": "",
+     "version": "0.0.6",    
+	 "content_scripts":[
+        {
+            "matches": ["http://jobtrack.ncg.sencor.net/resolverdb.aspx"],
+            "js": ["/js/contentscript.js"]
+        }
+     ],
+     "web_accessible_resources": ["/js/notify2.js", "/js/moment.min.js"],
+     "manifest_version": 4
 }

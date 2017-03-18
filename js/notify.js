@@ -14,7 +14,7 @@ else {
   title = 'Jobtrack #' + cells[0].textContent.replace(/\s+/g, ' ');
   time = moment(cells[2].textContent.replace(/\s+/g, ' ').trim(), 'MM/DD/YY hh:mm a').fromNow();
   body = cells[4].textContent.replace(/\s+/g, ' ') + '(' + cells[5].textContent.replace(/\s+/g, ' ').trim() + ')' + ' : ' + cells[1].textContent.replace(/\s+/g, ' ').trim() + '\n ' + time;
-  if (status == 'Pending') {
+  if (status == 'New') {
     toast(title, body);
     setFavicon();
   }

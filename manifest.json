@@ -8,6 +8,6 @@
             "js": ["/js/contentscript.js"]
         }
      ],
-     "web_accessible_resources": ["/js/notify2.js", "/js/moment.min.js"],
+     "web_accessible_resources": ["/js/notify.js", "/js/moment.min.js"],
      "manifest_version": 4
 }

@@ -1,23 +1,38 @@
+var url = 'http://jobtrack.ncg.sencor.net/processor.aspx?editID=';
+var tblPending = document.getElementById('ctl00_ContentPlaceHolder1_gvPending');
+var tblReserve = document.getElementById('ctl00_ContentPlaceHolder1_gvRoomReservation');
+
 moment().format();
 checkToast();
-if (document.getElementById('ctl00_ContentPlaceHolder1_gvPending') === null) {
+
+if (tblPending === null) {
   setFavicon('404');
   location.reload();
 } 
 else {
-  table = document.getElementById('ctl00_ContentPlaceHolder1_gvPending');
-  cells = table.getElementsByTagName('td');
+  //   Check for new jobtrack
+  cells = tblPending.getElementsByTagName('td');
   status = cells[7].textContent.replace(/\s+/g, ' ');
-  title = 'Jobtrack #' + cells[0].textContent.replace(/\s+/g, ' ');
+  jobid = cells[0].textContent.replace(/\s+/g, ' ');
+
+  title = 'Jobtrack #' + jobid;
   time = moment(cells[2].textContent.replace(/\s+/g, ' ').trim(), 'MM/DD/YY hh:mm a').fromNow();
   body = cells[4].textContent.replace(/\s+/g, ' ') + '(' + cells[5].textContent.replace(/\s+/g, ' ').trim() + ')' + ' : ' + cells[1].textContent.replace(/\s+/g, ' ').trim() + '\n ' + time;
   if (status == 'New') {
-    toast(title, body);
+    toast(title, body, jobid);
     setFavicon(status);
   } 
   else {
     setFavicon('okay');
   }
+
+
+  //  Check for upcoming reservation
+  cells = tblReserve.getElementsByTagName('td');
+  start = cells[2].textContent.replace(/\s+/g, ' ').trim();
+  title = cells[5].textContent.replace(/\s+/g, ' ').trim();
+  d = Date.parse(start);
+  console.log(d);
 }
 function checkToast() {
   if (Notification.permission === 'granted') {
@@ -30,13 +45,15 @@ function checkToast() {
     });
   }
 }
-function toast(title, body) {
+function toast(title, body, jobid) {
+  url=url+jobid;
   var notification = new Notification(title, {
     icon: 'http://eprofile.int.sencor.net/images/sencor150.png',
     body: body
   });
   notification.onclick = function () {
-    window.focus();
+      var win = window.open(url, '_blank');
+      win.focus();
   }
 }
 function setFavicon(status) {

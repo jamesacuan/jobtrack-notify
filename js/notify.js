@@ -1,7 +1,7 @@
 moment().format();
 checkToast();
 if (document.getElementById('ctl00_ContentPlaceHolder1_gvPending') === null) {
-  setFavicon();
+  setFavicon('404');
   location.reload();
 } 
 else {
@@ -13,14 +13,15 @@ else {
   body = cells[4].textContent.replace(/\s+/g, ' ') + '(' + cells[5].textContent.replace(/\s+/g, ' ').trim() + ')' + ' : ' + cells[1].textContent.replace(/\s+/g, ' ').trim() + '\n ' + time;
   if (status == 'New') {
     toast(title, body);
-    setFavicon();
+    setFavicon(status);
   } 
   else {
-    unsetFavicon();
+    setFavicon('okay');
   }
 }
 function checkToast() {
-  if (Notification.permission === 'granted') {}
+  if (Notification.permission === 'granted') {
+  } 
   else if (Notification.permission !== 'denied' || Notification.permission === 'default') {
     Notification.requestPermission(function (permission) {
       if (permission === 'granted') {
@@ -38,24 +39,18 @@ function toast(title, body) {
     window.focus();
   }
 }
-function setFavicon() {
+function setFavicon(status) {
   var link = document.querySelector('link[rel*=\'icon\']') || document.createElement('link');
   link.type = 'image/x-icon';
   link.rel = 'shortcut icon';
-  link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-new.png';
-  document.getElementsByTagName('head') [0].appendChild(link);
-}
-function setFaviconAlert() {
-  var link = document.querySelector('link[rel*=\'icon\']') || document.createElement('link');
-  link.type = 'image/x-icon';
-  link.rel = 'shortcut icon';
-  link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-alert.png';
-  document.getElementsByTagName('head') [0].appendChild(link);
-}
-function unsetFavicon() {
-  var link = document.querySelector('link[rel*=\'icon\']') || document.createElement('link');
-  link.type = 'image/x-icon';
-  link.rel = 'shortcut icon';
-  link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-none.png';
+  if (status == 'New') {
+    link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-new.png';
+  } 
+  else if (status == '404') {
+    link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-alert.png';
+  } 
+  else {
+    link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-none.png';
+  }
   document.getElementsByTagName('head') [0].appendChild(link);
 }

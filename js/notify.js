@@ -1,9 +1,7 @@
 moment().format();
 checkToast();
 if (document.getElementById('ctl00_ContentPlaceHolder1_gvPending') === null) {
-  title = 'Jobtrack has crashed';
-  body = 'Don\'t worry. We have reload it for you';
-  toast(title, body);
+  setFavicon();
   location.reload();
 } 
 else {
@@ -22,7 +20,7 @@ else {
   }
 }
 function checkToast() {
-  if (permission === 'granted') {}
+  if (Notification.permission === 'granted') {}
   else if (Notification.permission !== 'denied' || Notification.permission === 'default') {
     Notification.requestPermission(function (permission) {
       if (permission === 'granted') {
@@ -45,6 +43,13 @@ function setFavicon() {
   link.type = 'image/x-icon';
   link.rel = 'shortcut icon';
   link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-new.png';
+  document.getElementsByTagName('head') [0].appendChild(link);
+}
+function setFaviconAlert() {
+  var link = document.querySelector('link[rel*=\'icon\']') || document.createElement('link');
+  link.type = 'image/x-icon';
+  link.rel = 'shortcut icon';
+  link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-alert.png';
   document.getElementsByTagName('head') [0].appendChild(link);
 }
 function unsetFavicon() {

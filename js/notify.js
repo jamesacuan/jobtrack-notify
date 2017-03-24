@@ -1,6 +1,8 @@
 var url = 'http://jobtrack.ncg.sencor.net/processor.aspx?editID=';
 var tblPending = document.getElementById('ctl00_ContentPlaceHolder1_gvPending');
 var tblReserve = document.getElementById('ctl00_ContentPlaceHolder1_gvRoomReservation');
+var tblOverdue = document.getElementById('ctl00_ContentPlaceHolder1_gvOverDue');
+var now = new Date();
 
 moment().format();
 checkToast();
@@ -19,20 +21,31 @@ else {
   time = moment(cells[2].textContent.replace(/\s+/g, ' ').trim(), 'MM/DD/YY hh:mm a').fromNow();
   body = cells[4].textContent.replace(/\s+/g, ' ') + '(' + cells[5].textContent.replace(/\s+/g, ' ').trim() + ')' + ' : ' + cells[1].textContent.replace(/\s+/g, ' ').trim() + '\n ' + time;
   if (status == 'New') {
-    toast(title, body, jobid);
+    toast(title, body, url+jobid);
     setFavicon(status);
   } 
   else {
     setFavicon('okay');
   }
 
-
-  //  Check for upcoming reservation
+  //  Check for upcoming reservation (will notify with 10-15 minutes)
   cells = tblReserve.getElementsByTagName('td');
   start = cells[2].textContent.replace(/\s+/g, ' ').trim();
   title = cells[5].textContent.replace(/\s+/g, ' ').trim();
-  d = Date.parse(start);
-  console.log(d);
+  body  = cells[4].textContent.replace(/\s+/g, ' ').trim()+'\n'+cells[0].textContent.replace(/\s+/g, ' ').trim()+'\n'+start;
+  d = new Date(start);
+  min = 0;
+  if(d.getMinutes()==0){
+    min=59;
+  }
+  else
+    min = d.getMinutes;
+
+  if((now.getHours()-d.getHours())==-1){
+    if((min-now.getMinutes())<=15 && (min-now.getMinutes())>=10){
+      toast(title, body, 'goback');
+    }
+  }
 }
 function checkToast() {
   if (Notification.permission === 'granted') {
@@ -45,29 +58,30 @@ function checkToast() {
     });
   }
 }
-function toast(title, body, jobid) {
-  url=url+jobid;
+function toast(title, body, url) {
   var notification = new Notification(title, {
     icon: 'http://eprofile.int.sencor.net/images/sencor150.png',
     body: body
   });
   notification.onclick = function () {
-      var win = window.open(url, '_blank');
-      win.focus();
+      if(url=='goback'){
+        window.focus();
+      }
+      else{
+        var win = window.open(url, '_blank');
+        win.focus();
+      }
   }
 }
 function setFavicon(status) {
   var link = document.querySelector('link[rel*=\'icon\']') || document.createElement('link');
   link.type = 'image/x-icon';
   link.rel = 'shortcut icon';
-  if (status == 'New') {
+  if (status == 'New')
     link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-new.png';
-  } 
-  else if (status == '404') {
-    link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-alert.png';
-  } 
-  else {
+  else if (status == '404')
+    link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-alert.png'; 
+  else
     link.href = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master/img/favicon-none.png';
-  }
   document.getElementsByTagName('head') [0].appendChild(link);
 }

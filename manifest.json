@@ -8,6 +8,7 @@
             "js": ["/js/contentscript.js"]
         }
      ],
+     "options_page": "options.html",
      "permissions":["notifications"],
      "web_accessible_resources": [
         "/js/notify.js",

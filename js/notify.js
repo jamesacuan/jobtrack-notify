@@ -63,19 +63,17 @@ function toast(title, body, url) {
     body: body
   });
   setTimeout(function(){
-    notification.cancel();
-  },1000);
+    notification.close();
+  },3000);
   notification.onclick = function () {
       if(url=='goback'){
-        tblReserve.rows[1].style.backgroundColor='#1E88E5';
-        tblReserve.rows[1].style.color='white';
         window.focus();
       }
       else{
         var win = window.open(url, '_blank');
         win.focus();
       }
-  }
+  };
 }
 function setFavicon(status) {
   var link = document.querySelector('link[rel*=\'icon\']') || document.createElement('link');

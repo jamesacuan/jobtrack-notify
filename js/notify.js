@@ -37,7 +37,7 @@ else {
   title = 'Jobtrack #' + jobid;
   time = moment(cells[2].textContent.replace(/\s+/g, ' ').trim(), 'MM/DD/YY hh:mm a').fromNow();
   body = cells[4].textContent.replace(/\s+/g, ' ') + '(' + cells[5].textContent.replace(/\s+/g, ' ').trim() + ')' + ' : ' + cells[1].textContent.replace(/\s+/g, ' ').trim() + '\n ' + time;
-  if (assigned) {
+  if (assigned == "") {
     toast(title, body, url+jobid);
     setFavicon('New');
   } 

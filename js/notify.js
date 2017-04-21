@@ -28,7 +28,23 @@ else {
   else {
     setFavicon('okay');
   }
+    
+  //  Check for unassigned overdue jobtrack
+  cells = tblOverdue.getElementsByTagName('td');
+  assigned = cells[8].textContent.replace(/\s+/g, ' ');
+  jobid = cells[0].textContent.replace(/\s+/g, ' ');
 
+  title = 'Jobtrack #' + jobid;
+  time = moment(cells[2].textContent.replace(/\s+/g, ' ').trim(), 'MM/DD/YY hh:mm a').fromNow();
+  body = cells[4].textContent.replace(/\s+/g, ' ') + '(' + cells[5].textContent.replace(/\s+/g, ' ').trim() + ')' + ' : ' + cells[1].textContent.replace(/\s+/g, ' ').trim() + '\n ' + time;
+  if (assigned) {
+    toast(title, body, url+jobid);
+    setFavicon('New');
+  } 
+  else {
+    setFavicon('okay');
+  }
+    
   //  Check for upcoming reservation
   cells = tblReserve.getElementsByTagName('td');
   start = cells[2].textContent.replace(/\s+/g, ' ').trim();

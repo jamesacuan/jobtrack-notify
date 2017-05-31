@@ -17,7 +17,8 @@
 
      "permissions":[
          "notifications",
-         "storage"
+         "storage",
+         "contextMenus"
      ],
 
      "web_accessible_resources": [
@@ -31,8 +32,12 @@
      "browser_action": {
          "default_title" : "NOD",
          "default_icon"  : "/img/favicon-none.png",
-         "default_popup" : "http://nod.int.sencor.net/turn_over/sort_result.asp"
+         "default_popup" : "popup.html"
      },
+
+    "background": {
+        "scripts": ["/js/background.js"]
+    },
 
      "manifest_version": 4
 }

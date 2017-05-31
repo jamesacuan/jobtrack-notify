@@ -30,6 +30,7 @@
 
      "browser_action": {
          "default_title" : "NOD",
+         "default_icon"  : "/img/favicon-none.png",
          "default_popup" : "http://nod.int.sencor.net/turn_over/sort_result.asp"
      },
 

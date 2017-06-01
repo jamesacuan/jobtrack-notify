@@ -1,12 +1,17 @@
 {
-     "name": "netops-fix",
+     "name": "Netops",
      "description": "Applies fixes in most netops sites. Shows a toast notification for new or unassigned jobtrack.",
      "homepage_url": "http://nod.sencor.net",
-     "version": "0.1.9",    
+     "version": "0.2.0",    
 	 "content_scripts":[
         {
-            "matches": ["*://*.sencor.net/*"],
-            "js": ["/js/contentscript.js"]
+            "matches": [
+                "http://nod.sencor.net/PSIEmail/PSI.aspx",
+                "http://jobtrack.ncg.sencor.net/resolverdb.aspx"
+            ],
+            "js": [
+                "/js/contentscript.js"
+            ]
         }
      ],
 
@@ -22,11 +27,10 @@
      ],
 
      "web_accessible_resources": [
-        "/js/notify.js",
-        "/js/moment.min.js",
-        "/js/options.js",
         "/js/jquery.min.js",
-        "/js/clipboard.min.js"
+        "/js/fix.js",    
+        "/js/options.js",
+        "/js/moment.min.js"
      ],
 
      "browser_action": {
@@ -36,8 +40,12 @@
      },
 
     "background": {
-        "scripts": ["/js/background.js"]
+        "scripts": [
+            "/js/jquery.min.js",
+            "/js/background.js",
+            "/js/moment.min.js"
+        ]
     },
 
-     "manifest_version": 4
+     "manifest_version": 2
 }

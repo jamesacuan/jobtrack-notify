@@ -1,9 +1,10 @@
 chrome.contextMenus.removeAll();
 
 var links = [
-  ["NOD Site", "http://nod.sencor.net"],
-  ["Hardware Maintenance", "http://nod.int.sencor.net/pulloutform/main.asp"],
-  ["E-profile", "http://eprofile.int.sencor.net"]
+  ["Network Utilization", "http://nod.sencor.net/NetworkUtilization/NetworkUtil.aspx"],
+  ["Turnover", "http://nod.sencor.net/TurnOver/TurnOver.aspx"],
+  ["Email", "http://nod.sencor.net/PSIEmail/PSI.aspx"],
+  ["PRF", "http://nod.sencor.net/PRF/PRF's.aspx"]
 ];
 
 for(var i = 0; i < links.length; i++) {
@@ -11,7 +12,7 @@ for(var i = 0; i < links.length; i++) {
       title: links[i][0],
       contexts: ["browser_action"],
       onclick: function() {         
-        window.open(""+links[i][1], '_blank');
+        window.open(window.links[i][1], '_blank');
       }
   });
 }

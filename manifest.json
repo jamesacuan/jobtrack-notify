@@ -1,14 +1,15 @@
 {
      "name": "Netops",
-     "description": "Applies fixes in most netops sites. Shows a toast notification for new or unassigned jobtrack.",
+     "description": "Applies fixes on netops sites.",
      "homepage_url": "http://nod.sencor.net",
-     "version": "0.2.0",    
+     "version": "0.2.3",    
 	 "content_scripts":[
         {
             "matches": [
                 "http://nod.sencor.net/PSIEmail/PSI.aspx",
                 "http://jobtrack.ncg.sencor.net/resolverdb.aspx",
-                "http://jobtrack.ncg.sencor.net/editrequest.aspx"
+                "http://jobtrack.ncg.sencor.net/editrequest.aspx",
+                "http://nod.sencor.net/PRF/PRF's.aspx"
             ],
             "js": [
                 "/js/jquery.min.js",

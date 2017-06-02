@@ -1,0 +1,26 @@
+
+#content{
+    width: 1200px !important;
+}
+
+.active{
+    background-color: #fff6b5 !important;
+}
+
+.notify{
+    border:#f0c36d 1px solid;
+    display:none;
+    position: absolute;
+    top: 45px;
+    background: #fff6b5;
+    font-family: segoe ui, arial, sans-serif;
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 3px;
+    left: 40%;
+}
+
+.cmdbutton{
+    padding: 1px 6px !important;
+    text-decoration: none !important;
+}

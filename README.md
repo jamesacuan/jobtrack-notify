@@ -10,10 +10,11 @@ Just a missing piece for our netops sites that it could work well with modern da
 - An easy access to turnover through browser action
 - added direct copy to clipboard on relevant information
 - design fixes
+- menu through browser action
+- added basic lightbox support on select images.
 
 ## TO-DO
 - login/logout on all sites from extension.
-- menu through browser action
-- lightbox on select images.
+- ux fixes
 
 This works with Chrome and Firefox.

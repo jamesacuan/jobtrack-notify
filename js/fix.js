@@ -52,6 +52,12 @@ else if (document.location.href == emailloc) {
 else if (document.location.href == scanprf){
   $('body').append("<div class='lightbox'><div class='container'><span id='closebox'>close</span><img src='http://nod.sencor.net/PRF_Files/020617054314.jpg'></img></div></div>");
   var c = document.getElementById("closebox");
+ for(var i=0; i<=$('#ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_GrdviewPRF td:nth-child(9)').length; i++){
+    var test = $('#ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_GrdviewPRF tr:nth-child('+i+') td:nth-child(9)').text();
+    /*console.log("<a href='/"+test+">"+test+"</a>");*/
+    $('#ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_GrdviewPRF tr:nth-child('+i+') td:nth-child(9)').html("<a href=\"javascript:lightbox('http://nod.sencor.net/PRF_Files/"+test+"')\">"+test+"</a>");  
+} 
+
   c.addEventListener('click', function() {
     lightbox('test');
   }, false);
@@ -189,4 +195,5 @@ function checkToast() {
 
 function lightbox(elem){
   $('.lightbox').fadeToggle();
+  $('.lightbox img').attr("src",elem);
 }

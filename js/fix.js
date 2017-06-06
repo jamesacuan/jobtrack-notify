@@ -12,6 +12,7 @@ tblOverdue = document.getElementById(cph + "gvOverDue");
 tblEmail = document.getElementById('ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_GrdView');
 now = new Date();
 $('body').append("<div class='notify'>testing</div>");
+
 if (document.location.href == jobreq) {
   asset = $('#ctl00_ContentPlaceHolder1_lblAssetNo').text();
   $("#" + cph + "lblJobtrackNo").dblclick(function(e) {
@@ -24,7 +25,9 @@ if (document.location.href == jobreq) {
   });
   */
   $("#" + cph + "lblAssetNo").html(asset + "<a style='margin-left: 10px; text-decoration: none' href='http://inventory.int.sencor.net/Description.asp?qinvcomputername=" + asset + "' target='_blank' class='cmdbutton' style='text-decoration: none'>Inventory</a> <a href='http://nod.int.sencor.net/pulloutform/result2.asp?search=" + asset + "' target='_blank' class='cmdbutton'>Hardware Maintenance</a>");
-} else if (document.location.href == emailloc) {
+}
+
+else if (document.location.href == emailloc) {
   var cells = tblEmail.getElementsByTagName('td');
   $('#ctl00_ctl00_ContentPlaceHolder1_ContentPlaceHolder1_GrdView td:nth-child(2)').dblclick(function(e) {
     var test = $(e.target).text().trim() + " (SENCOR)";
@@ -44,14 +47,16 @@ if (document.location.href == jobreq) {
     $('tr').removeClass('active');
     $(this).parent().addClass('active');
   });
-} else if (document.location.href == scanprf){
+}
+
+else if (document.location.href == scanprf){
   $('body').append("<div class='lightbox'><div class='container'><span id='closebox'>close</span><img src='http://nod.sencor.net/PRF_Files/020617054314.jpg'></img></div></div>");
   var c = document.getElementById("closebox");
-
   c.addEventListener('click', function() {
     lightbox('test');
   }, false);
 }
+
 else {
   var mom = 1;
   try {

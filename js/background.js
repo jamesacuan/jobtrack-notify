@@ -55,9 +55,29 @@ chrome.contextMenus.create({
 });
 
 chrome.contextMenus.create({
-  "title"    : "Email",
-  "parentId" : "PARENT",
-  "id"       : "EMAIL",
+  "title"    : "NOD",
+  "id"       : "NOD",
+  "contexts" : ["browser_action"]
+});
+
+chrome.contextMenus.create({
+  "title"    : "Old NOD Site",
+  "parentId" : "NOD",
+  "id"       : "OLD",
+  "contexts" : ["browser_action"]
+});
+
+chrome.contextMenus.create({
+  "title"    : "Information",
+  "parentId" : "NOD",
+  "id"       : "INFORMATION",
+  "contexts" : ["browser_action"]
+});
+
+chrome.contextMenus.create({
+  "title"    : "Hardware Maintenance",
+  "parentId" : "NOD",
+  "id"       : "HARDWARE",
   "contexts" : ["browser_action"]
 });
 
@@ -67,22 +87,64 @@ chrome.contextMenus.create({
   "contexts" : ["browser_action"]
 });
 
+chrome.contextMenus.create({
+  id: "separator-2",
+  type: "separator",
+  contexts: ["browser_action"]
+});
+
+chrome.contextMenus.create({
+  "title"    : "E-Profile",
+  "id"       : "PROFILE",
+  "contexts" : ["browser_action"]
+});
+
+chrome.contextMenus.create({
+  "title"    : "Overtime",
+  "id"       : "OVERTIME",
+  "contexts" : ["browser_action"]
+});
+
+chrome.contextMenus.create({
+  "title"    : "Change Schedule",
+  "id"       : "CHANGESCHED",
+  "contexts" : ["browser_action"]
+});
+
 chrome.contextMenus.onClicked.addListener(onClickHandler);
 
 function onClickHandler(info, tab) {
-  if (info.menuItemId == "radio1" || info.menuItemId == "radio2") {
-    console.log("radio item " + info.menuItemId +
-                " was clicked (previous checked state was "  +
-                info.wasChecked + ")");
-  } else if (info.menuItemId == "checkbox1" || info.menuItemId == "checkbox2") {
-    console.log(JSON.stringify(info));
-    console.log("checkbox item " + info.menuItemId +
-                " was clicked, state is now: " + info.checked +
-                " (previous state was " + info.wasChecked + ")");
-
-  } else {
-    console.log("item " + info.menuItemId + " was clicked");
-    console.log("info: " + JSON.stringify(info));
-    console.log("tab: " + JSON.stringify(tab));
+  if (info.menuItemId == "NETUTIL") {
+	  chrome.tabs.create({ url: "http://nod.sencor.net/NetworkUtilization/NetworkUtil.aspx" });
+  }
+  else if (info.menuItemId == "EMAIL") {
+	  chrome.tabs.create({ url: "http://nod.sencor.net/PSIEmail/PSI.aspx" });
+  }
+  else if (info.menuItemId == "BACKUP") {
+	  chrome.tabs.create({ url: "http://nod.sencor.net/ePLDT/ePLDT.aspx" });
+  }
+  else if (info.menuItemId == "PRF") {
+	  chrome.tabs.create({ url: "http://nod.sencor.net/PRF/PRF's.aspx" });
+  }
+  else if (info.menuItemId == "TURNOVER") {
+	  chrome.tabs.create({ url: "http://nod.sencor.net/TurnOver/TurnOver.aspx" });
+  }
+  else if (info.menuItemId == "PROFILE") {
+	  chrome.tabs.create({ url: "http://eprofile.int.sencor.net" });
+  }
+  else if (info.menuItemId == "OVERTIME") {
+	  chrome.tabs.create({ url: "http://overtime.int.sencor.net" });
+  }
+  else if (info.menuItemId == "CHANGESCHED") {
+	  chrome.tabs.create({ url: "http://changesched.int.sencor.net" });
+  }
+  else if (info.menuItemId == "HARDWARE") {
+	  chrome.tabs.create({ url: "http://nod.int.sencor.net/pulloutform/main.asp" });
+  }
+  else if (info.menuItemId == "INFORMATION") {
+	  chrome.tabs.create({ url: "http://information.int.sencor.net/informationlogin.asp" });
+  }
+  else {
+	console.log("error in context menu");
   }
 };

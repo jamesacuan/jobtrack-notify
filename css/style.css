@@ -48,3 +48,42 @@
 #closebox{
   color: #fff;
 }
+
+table[style*="width:100%; height: 670px;"]{
+  width: 100% !important;
+  height: 100% !important;
+  flex: 1;
+  position: absolute;
+}
+
+table[style*="width:100%; height: 670px;"] tr td .divright,
+table[style*="width:100%; height: 670px;"] tr td .divright table{
+   height: 100% !important;
+}
+   
+.divInside,
+.divInside table{
+    width: 100% !important;
+}
+.divInside table tr td{
+  padding: 8px 0 !important;
+}
+
+table
+
+table[style*="width: 95%; height: 64px;"] td{
+  padding : 0 !important;
+}
+
+
+.divInside table tr td div[style*=" width: 1000px; height: 580px; overflow: auto;"]{
+width: 100% !important;
+height: 100% !important;
+
+}
+
+
+.divInside table tr td[style*="height: 580px;top: 0px;"]{
+height: 100% !important;
+}
+

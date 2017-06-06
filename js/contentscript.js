@@ -23,3 +23,8 @@ loadfile(u, "js");
 loadfile(s, "js");
 loadfile(t, "js");
 loadfile(v, "css");
+/*
+v = $('#ctl00_ContentPlaceHolder1_lblResolution').text();
+chrome.storage.sync.set({
+    "resolution": v;
+});*/

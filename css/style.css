@@ -1,7 +1,44 @@
-
-#content{
-    width: 1200px !important;
+body{
+  margin: 0;
+  padding: 0;
+  float: none !important;
 }
+table{
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+#content {
+  margin-top: 5em !important;
+    width: 97%;
+    margin: auto;
+}
+#aspnetForm #header{
+  background-image: url('http://nod.sencor.net/Images/logo-left.png') !important;
+  background-repeat: no-repeat;
+  background-color: #005950;
+}
+#aspnetForm #header .title{
+  display: none;
+}
+#aspnetForm #navigation{
+  margin-top: 0em;
+  border-bottom: none;
+}
+
+#aspnetForm #navigation li a{
+  text-transform: none;
+font-weight: normal;
+  padding: 10px 20px;
+}
+#header{
+  height: 6em;
+}
+#header .greeting,
+#header .greeting a{
+  color: #fff;
+  margin-top: 2em;
+}
+
 
 .active{
     background-color: #fff6b5 !important;
@@ -49,6 +86,22 @@
   color: #fff;
 }
 
+div.gv-one,
+div.gv-two,
+div.gv-three,
+div.gv-four,
+.div-request,
+.div-request2{
+border-radius: 0;
+height: auto;
+box-shadow: none;
+margin: 0 0 30px 0;
+}
+
+b{
+  font-style:normal !important;
+}
+/*
 table[style*="width:100%; height: 670px;"]{
   width: 100% !important;
   height: 100% !important;
@@ -87,3 +140,4 @@ height: 100% !important;
 height: 100% !important;
 }
 
+*/

@@ -9,7 +9,8 @@
                 "http://nod.sencor.net/PSIEmail/PSI.aspx",
                 "http://jobtrack.ncg.sencor.net/resolverdb.aspx",
                 "http://jobtrack.ncg.sencor.net/editrequest.aspx",
-                "http://nod.sencor.net/PRF/PRF's.aspx"
+                "http://nod.sencor.net/PRF/PRF's.aspx",
+                "http://jobtrack.ncg.sencor.net/default.aspx"
             ],
             "js": [
                 "/js/jquery.min.js",
@@ -49,6 +50,12 @@
            "/js/contentscript.js",
            "/js/background.js"
         ]
+    },
+
+    "sidebar_action": {
+        "default_title": "Routine",
+        "default_panel": "routine.html",
+        "default_icon": "/img/favicon-none.png"
     },
 
      "manifest_version": 2

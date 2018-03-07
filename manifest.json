@@ -17,6 +17,7 @@
             "js": [
                 "/js/jquery.min.js",
                 "/js/moment.min.js",
+                "/js/jquery.dataTables.min.js",
                 "/js/contentscript.js"
             ]
         }
@@ -28,6 +29,7 @@
      },
 
      "permissions":[
+         "tabs",
          "notifications",
          "storage",
          "contextMenus"
@@ -38,7 +40,9 @@
         "/js/fix.js",    
         "/js/options.js",
         "/js/moment.min.js",
-        "/css/style.css"
+        "/js/jquery.dataTables.min.js",
+        "/css/style.css",
+        "/css/jquery.dataTables.min.css"
      ],
 
      "browser_action": {

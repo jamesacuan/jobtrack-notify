@@ -3,9 +3,12 @@ jobtrack = "http://jobtrack.ncg.sencor.net/resolverdb.aspx";
 emailloc = "http://nod.sencor.net/PSIEmail/PSI.aspx";
 jobreq = "http://jobtrack.ncg.sencor.net/editrequest.aspx";
 scanprf = "http://nod.sencor.net/PRF/PRF's.aspx";
+jobhome = "http://jobtrack.ncg.sencor.net/default.aspx";
+
 url = 'http://jobtrack.ncg.sencor.net/processor.aspx?editID=';
 src = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master';
 cph = "ctl00_ContentPlaceHolder1_";
+
 tblPending = document.getElementById(cph + "gvPending");
 tblReserve = document.getElementById(cph + "gvRoomReservation");
 tblOverdue = document.getElementById(cph + "gvOverDue");
@@ -61,6 +64,15 @@ else if (document.location.href == scanprf){
   c.addEventListener('click', function() {
     lightbox('test');
   }, false);
+}
+
+else if (document.location.href == jobhome){
+    try{
+      $('#ctl00_ContentPlaceHolder1_gvMain').DataTable();
+    }catch (err) {
+      mom = 0;
+      console.log(err.message);
+    }
 }
 
 else if (document.location.href == jobtrack){

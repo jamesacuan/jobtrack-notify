@@ -4,6 +4,7 @@ emailloc = "http://nod.sencor.net/PSIEmail/PSI.aspx";
 jobreq = "http://jobtrack.ncg.sencor.net/editrequest.aspx";
 scanprf = "http://nod.sencor.net/PRF/PRF's.aspx";
 jobhome = "http://jobtrack.ncg.sencor.net/default.aspx";
+jobadd = "http://jobtrack.ncg.sencor.net/manualadd.aspx";
 
 url = 'http://jobtrack.ncg.sencor.net/processor.aspx?editID=';
 src = 'https://raw.githubusercontent.com/jamesacuan/jobtrack-notify/master';
@@ -73,6 +74,16 @@ else if (document.location.href == jobhome){
       mom = 0;
       console.log(err.message);
     }
+}
+
+else if (document.location.href == jobadd){
+  var options = $('select#ctl00_ContentPlaceHolder1_cmbSubCategory option');
+  var arr = options.map(function(_, o) { return { t: $(o).text(), v: o.value }; }).get();
+  arr.sort(function(o1, o2) { return o1.t > o2.t ? 1 : o1.t < o2.t ? -1 : 0; });
+  options.each(function(i, o) {
+    o.value = arr[i].v;
+    $(o).text(arr[i].t);
+  });
 }
 
 else if (document.location.href == jobtrack){

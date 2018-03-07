@@ -10,7 +10,9 @@
                 "http://jobtrack.ncg.sencor.net/resolverdb.aspx",
                 "http://jobtrack.ncg.sencor.net/editrequest.aspx",
                 "http://nod.sencor.net/PRF/PRF's.aspx",
-                "http://jobtrack.ncg.sencor.net/default.aspx"
+                "http://jobtrack.ncg.sencor.net/default.aspx",
+                "http://jobtrack.ncg.sencor.net/statviewer.aspx",
+                "http://jobtrack.ncg.sencor.net/manualadd.aspx"
             ],
             "js": [
                 "/js/jquery.min.js",

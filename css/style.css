@@ -85,7 +85,10 @@ font-weight: normal;
 #closebox{
   color: #fff;
 }
-
+.div-newreq{
+  box-shadow: none;
+  width: 95%;
+}
 div.gv-one,
 div.gv-two,
 div.gv-three,

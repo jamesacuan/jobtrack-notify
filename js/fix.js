@@ -63,7 +63,7 @@ else if (document.location.href == scanprf){
   }, false);
 }
 
-else {
+else if (document.location.href == jobtrack){
   var mom = 1;
   try {
     moment().format();

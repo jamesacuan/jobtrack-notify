@@ -19,7 +19,7 @@
                 "/js/moment.min.js",
                 "/js/jquery.dataTables.min.js",
                 "/js/contentscript.js"
-            ]
+            ]          
         }
      ],
 

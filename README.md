@@ -12,9 +12,12 @@ Just a missing piece for our netops sites that it could work well with modern da
 - design fixes
 - menu through browser action
 - added basic lightbox support on select images.
+- Firefox: added sidebar for routine (for quick tab)
+
+## BUG
+- Chrome: jquery doesn't load on jobtrack homepage (but works in resolverdb page), this affects datatables
 
 ## TO-DO
-- login/logout on all sites from extension.
-- ux fixes
+- check if feasible if we could send push notifications to android using native messaging and firebase. this would allow moving data from intranet and send it to phones through a browser.
 
 This works with Chrome and Firefox.

@@ -11,8 +11,15 @@
     iframe{
         width: 100%;
     }
+    .btn{
+        appearance: button;
+    -moz-appearance: button;
+    -webkit-appearance: button;
+    float:right;
+    }
     </style>
-    <div style="padding: 10px 5px; border-bottom: #005950 1px solid">
+    <div style="padding: 10px 5px; border-bottom: #005950 1px solid; box-shadow: 0px 3px 13px #888;">
+        <!--
     <form action="http://nod.int.sencor.net/turn_over/sort_result.asp" method="post" name="form2" target="_frame" style="float:left">
         View By:
             <select name="sort" onchange="this.form.submit()">
@@ -23,8 +30,12 @@
             </select>
             <input name="Submit22" type="submit" value="Submit"></noscript>
         </form>
-        <a href="http://nod.int.sencor.net/ROUTINE/Q.asp" target="mainframe" style="float:right">Reload</a>
+    -->
+    <a href='http://nod.int.sencor.net/ROUTINE/Routinelist.asp' target='mainframe'>View all</a>
+        <a class='btn' href="http://nod.int.sencor.net/ROUTINE/Q.asp" target="mainframe"><button>Reload</button></a>
     <div style='clear:both'></div>
     </div>
      
-    <iframe height="800" name="mainframe" id="menuframe" frameborder="0" src="http://nod.int.sencor.net/ROUTINE/Q.asp">NCG Turnover"</iframe>
+    <iframe height="800" name="mainframe" id="menuframe" frameborder="0" src="http://nod.int.sencor.net/ROUTINE/Q.asp">
+        "NCG Turnover"
+    </iframe>
